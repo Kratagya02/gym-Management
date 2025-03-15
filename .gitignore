@@ -1,0 +1,39 @@
+# Node.js dependencies
+node_modules/
+dist/
+.vite/
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+
+# macOS system files
+.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+
+# Dependencies cache
+.pnp
+.pnp.js
+
+# Git hooks
+.husky/_
+
+# Vite specific
+.vite/

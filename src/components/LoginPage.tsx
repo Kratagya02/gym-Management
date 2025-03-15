@@ -29,7 +29,7 @@ const LoginPage: React.FC = () => {
       </div>
       <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
         <h1 className="text-2xl font-semibold mb-4">Login</h1>
-        <form onSubmit={handleSubmit}>we
+        <form onSubmit={handleSubmit}>
           <div className="mb-4 bg-sky-100">
             <label htmlFor="username" className="block text-gray-600">Username</label>
             <input
