@@ -31,7 +31,8 @@ const MonthlyRevenue: React.FC = () => {
           <table className="min-w-full border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray-200">
-                <th className="border border-gray-300 px-4 py-2">Name</th>
+              <th className="border border-gray-300 px-4 py-2">Name</th>
+              <th className="border border-gray-300 px-4 py-2">Contact Number</th>
                 <th className="border border-gray-300 px-4 py-2">Joining Date</th>
                 <th className="border border-gray-300 px-4 py-2">Amount Paid</th>
               </tr>
@@ -40,6 +41,16 @@ const MonthlyRevenue: React.FC = () => {
               {monthlyRevenueMembers.map((member, index) => (
                 <tr key={index} className="hover:bg-gray-100">
                   <td className="border border-gray-300 px-4 py-2 text-center">{member.name}</td>
+                  <td className="border p-2">
+                <a
+                  href={`https://wa.me/${member.contactNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-600 hover:underline"
+                >
+                  {member.contactNumber}
+                </a>
+              </td>
                   <td className="border border-gray-300 px-4 py-2 text-center">{member.joiningDate}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">₹{member.amountPaid}</td>
                 </tr>

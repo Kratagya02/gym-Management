@@ -7,7 +7,8 @@ const ExpiringMembers: React.FC = () => {
   const currentYear = new Date().getFullYear(); // Get current year
 
   // Filter inquiries whose expiry date falls within the current month
-  const expiringMembers = inquiries.filter((inquiry) => {
+  console.log(inquiries)
+  const expiringMembers = inquiries?.filter((inquiry) => {
     if (!inquiry.expiryDate) return false;
     
     const expiryDate = new Date(inquiry.expiryDate);

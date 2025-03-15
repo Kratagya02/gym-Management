@@ -3,7 +3,6 @@ import { create } from 'zustand';
 // Inquiry Interface
 export interface Inquiry {
   name: string;
-  dateOfBirth: string;
   joiningDate: string;
   expiryDate: string;
   tenure: string;
@@ -15,7 +14,6 @@ export interface Inquiry {
   contactNumber: string;
   email: string;
   reference: string;
-  emergencyNumber: string;
   address:string,
 }
 
@@ -36,7 +34,6 @@ interface InquiryStore {
 // Default form data
 const defaultFormData: Inquiry = {
   name: '',
-  dateOfBirth: '',
   joiningDate: '',
   expiryDate: '',
   tenure: '',
@@ -48,7 +45,6 @@ const defaultFormData: Inquiry = {
   contactNumber: '',
   email: '',
   reference: '',
-  emergencyNumber: '',
   address:''
 };
 
@@ -84,10 +80,12 @@ export const useInquiryStore = create<InquiryStore>((set) => ({
     
     importInquiry: (inquiry: Partial<Inquiry>) =>
       set((state) => {
-        const updatedInquiries = [...state.inquiries, inquiry];
+        const newInquiry: Inquiry = { ...defaultFormData, ...inquiry }; // ✅ Ensure all fields exist
+        const updatedInquiries = [...state.inquiries, newInquiry];
         localStorage.setItem("inquiries", JSON.stringify(updatedInquiries));
         return { inquiries: updatedInquiries };
       }),
+    
     
       updateInquiry: () =>
         set((state) => {

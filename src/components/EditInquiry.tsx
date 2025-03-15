@@ -8,13 +8,11 @@ interface EditInquiryProps {
 const EditInquiry: React.FC<EditInquiryProps> = ({ setActiveTab }) => {
   const { selectedInquiry, updateInquiry } = useInquiryStore();
   const [formData, setFormData] = useState(selectedInquiry);
-
   if (!formData) return null;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = () => {
     updateInquiry();
     alert('Inquiry Updated Successfully!');

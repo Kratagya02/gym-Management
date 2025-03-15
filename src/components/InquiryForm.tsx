@@ -21,9 +21,7 @@ const InquiryForm: React.FC = () => {
     const newErrors: { [key: string]: string } = {};
     
     if (!formData.name.trim()) newErrors.name = 'Name is required';
-    console.log(formData.contactNumber.match(/^\d{10}$/))
     if (!formData.contactNumber.match(/^\d{10}$/)) newErrors.contactNumber = 'Invalid contact number (10 digits)';
-    if (!formData.emergencyNumber.match(/^\d{10}$/)) newErrors.contactNumber = 'Invalid contact number (10 digits)';
     if (!formData.email.match(/^\S+@\S+\.\S+$/)) newErrors.email = 'Invalid email format';
     if (formData.amount && Number(formData.amount) <= 0) newErrors.amount = 'Amount must be greater than zero';
     if (formData.amountPaid && Number(formData.amountPaid) < 0) newErrors.amountPaid = 'Amount Paid cannot be negative';
@@ -44,7 +42,6 @@ const InquiryForm: React.FC = () => {
     // Clear form data after successful submission
     setFormData({
       name: '',
-      dateOfBirth: '',
       address:'',
       joiningDate: '',
       expiryDate: '',
@@ -57,7 +54,6 @@ const InquiryForm: React.FC = () => {
       contactNumber: '',
       email: '',
       reference: '',
-      emergencyNumber: '',
     });
 
     alert('Inquiry Submitted Successfully!');

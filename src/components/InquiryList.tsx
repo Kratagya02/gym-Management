@@ -89,7 +89,16 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
           {inquiries.map((inquiry, index) => (
             <tr key={index} className="hover:bg-gray-100">
               <td className="border p-2">{inquiry.name}</td>
-              <td className="border p-2">{inquiry.contactNumber}</td>
+              <td className="border p-2">
+                <a
+                  href={`https://wa.me/${inquiry.contactNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-600 hover:underline"
+                >
+                  {inquiry.contactNumber}
+                </a>
+              </td>
               <td className="border p-2">{inquiry.joiningDate}</td>
               <td className="border p-2">{inquiry.expiryDate}</td>
               <td className="border p-2 flex flex-row justify-between">
