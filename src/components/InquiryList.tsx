@@ -91,7 +91,7 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
               <td className="border p-2">{inquiry.name}</td>
               <td className="border p-2">
                 <a
-                  href={`https://wa.me/${inquiry.contactNumber}`}
+                  href={`https://web.whatsapp.com/send?phone=${inquiry.contactNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-600 hover:underline"

@@ -53,9 +53,9 @@ const ExpiringMembers: React.FC = () => {
                   </td>
                   <td className="border border-gray-300 px-4 py-2 text-center">
                     <a
-                      href={`https://wa.me/${
+                      href={`https://web.whatsapp.com/send?phone=${
                         member.contactNumber
-                      }?text=${encodeURIComponent(
+                      }&text=${encodeURIComponent(
                         `YUVI FITNESS GYM\n\nYour Gym Membership is About to Expire\n\nDear ${member.name},\n\nWe hope you've enjoyed your time at YUVI FITNESS. We wanted to remind you that your current membership will be expiring on ${member.expiryDate}.\n\nTo continue enjoying all the benefits of our gym, we encourage you to renew your membership before the expiration date.\n\nIf you have any questions or need assistance with the renewal process, feel free to contact us at 8966968087 for more information.\n\nThank you for being a valued member of YUVI FITNESS, and we look forward to continuing to support your fitness journey!\n\nBest regards,\nYUVRAJ NAROLIYA\nGYM OWNER\nYUVI FITNESS GYM\n8966968087`
                       )}`}
                       target="_blank"

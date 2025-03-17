@@ -58,9 +58,9 @@ const MonthlyRevenue: React.FC = () => {
                   </td>
                   <td className="border p-2">
                     <a
-                      href={`https://wa.me/${
+                      href={`https://web.whatsapp.com/send?phone=${
                         member.contactNumber
-                      }?text=${encodeURIComponent(
+                      }&text=${encodeURIComponent(
                         "Welcome to YUVI FITNESS! We're thrilled to have you join our community. Get ready to achieve your fitness goals with our top-notch facilities, classes, and support. Our team is here to guide you every step of the way. Let’s get started on your fitness journey today!\n\nIf you have any queries, please contact us at 8966968087.\n\nThank you for joining us!"
                       )}`}
                       target="_blank"
