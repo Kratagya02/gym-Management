@@ -14,7 +14,7 @@ const EditInquiry: React.FC<EditInquiryProps> = ({ setActiveTab }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
-    updateInquiry();
+    updateInquiry(formData);
     alert('Inquiry Updated Successfully!');
     setActiveTab('list');
   };

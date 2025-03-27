@@ -7,10 +7,13 @@ interface InquiryListProps {
 }
 
 const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
-  const { inquiries, setSelectedInquiry, removeInquiry, importInquiry } = useInquiryStore();
+  const { inquiries, setSelectedInquiry, removeInquiry, importInquiry } =
+    useInquiryStore();
 
   const handleDelete = (contactNumber: string) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this inquiry?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this inquiry?"
+    );
     if (confirmDelete) {
       removeInquiry(contactNumber);
       alert("Inquiry deleted successfully!");
@@ -40,14 +43,16 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const importedData = XLSX.utils.sheet_to_json(sheet);
-      
+
       if (Array.isArray(importedData)) {
-        importedData.forEach((inquiry: any) => importInquiry({
-          name: inquiry.name || "", 
-          contactNumber: inquiry.contactNumber || "", 
-          joiningDate: inquiry.joiningDate || "", 
-          expiryDate: inquiry.expiryDate || ""
-        }));
+        importedData.forEach((inquiry: any) =>
+          importInquiry({
+            name: inquiry.name || "",
+            contactNumber: inquiry.contactNumber || "",
+            joiningDate: inquiry.joiningDate || "",
+            expiryDate: inquiry.expiryDate || "",
+          })
+        );
         alert("Inquiries imported successfully!");
       }
     };
@@ -61,14 +66,14 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
           Inquiries
         </h2>
         <div className="flex space-x-2">
-          <input 
-            type="file" 
-            accept=".xlsx, .xls" 
-            onChange={importFromExcel} 
+          <input
+            type="file"
+            accept=".xlsx, .xls"
+            onChange={importFromExcel}
             className="cursor-pointer bg-gray-300 text-black px-4 py-2 rounded-md"
           />
-          <button 
-            onClick={exportToExcel} 
+          <button
+            onClick={exportToExcel}
             className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md"
           >
             Export to Excel
@@ -91,7 +96,11 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
               <td className="border p-2">{inquiry.name}</td>
               <td className="border p-2">
                 <a
-                  href={`https://web.whatsapp.com/send?phone=${inquiry.contactNumber}`}
+                  href={`https://web.whatsapp.com/send?phone=${
+                    inquiry.contactNumber
+                  }&text=${encodeURIComponent(
+                    `Welcome to YUVI FITNESS!\n\nThank you for choosing us to help you on your fitness journey. We are excited to have you on board!\n\nPlease note the following details:\n\n- *Amount Paid*: ${inquiry.amountPaid}\n- *Tenure*: ${inquiry.tenure}\n- *Gym Timings*: We are open from Monday to Saturday.\n  - Morning: 6:00 AM to 11:00 AM\n  - Evening: 5:00 PM to 10:00 PM\n\nIf you have any questions or need assistance, feel free to reach out to us. We're here to help you achieve your fitness goals!`
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-600 hover:underline"

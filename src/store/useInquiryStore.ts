@@ -25,7 +25,7 @@ interface InquiryStore {
   setFormData: (data: Partial<Inquiry>) => void; // ✅ Accepts Partial Inquiry
   setSelectedInquiry: (inquiry: Inquiry | null) => void;
   addInquiry: () => void;
-  updateInquiry: () => void;
+  updateInquiry: (data: Partial<Inquiry>) => void;
   removeInquiry: (contactNumber: string) => void;
   loadInquiries: () => void;
   importInquiry: (inquiry: Partial<Inquiry>) => void;
@@ -61,13 +61,13 @@ export const useInquiryStore = create<InquiryStore>((set) => ({
 
   setFormData: (data) =>
     set((state) => ({
-      formData: { ...state.formData, ...data }, // ✅ Correct Partial Update
+      formData: { ...state.formData, ...data }, 
     })),
 
   setSelectedInquiry: (inquiry) =>
     set(() => ({
       selectedInquiry: inquiry,
-      formData: inquiry ? { ...inquiry } : { ...defaultFormData }, // ✅ Ensure No Mutations
+      formData: inquiry ? { ...inquiry } : { ...defaultFormData }, 
     })),
 
   addInquiry: () =>
@@ -87,13 +87,16 @@ export const useInquiryStore = create<InquiryStore>((set) => ({
       }),
     
     
-      updateInquiry: () =>
-        set((state) => {
-          const updatedInquiries = state.inquiries.map((inq) => ({
-            ...inq,
-            ...state.formData, // Overwrite all fields with form data
-          }));
-          console.log(updatedInquiries)
+      updateInquiry: (updatedInquiry: Partial<Inquiry>) =>
+        set(() => {
+          const storedInquiries = JSON.parse(localStorage.getItem("inquiries") || "[]");
+      
+          const updatedInquiries = storedInquiries.map((inq: Inquiry) =>
+            inq.contactNumber === updatedInquiry.contactNumber
+              ? { ...inq, ...updatedInquiry }
+              : inq
+          );
+      
           localStorage.setItem("inquiries", JSON.stringify(updatedInquiries));
       
           return {
