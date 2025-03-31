@@ -39,6 +39,7 @@ const MonthlyRevenue: React.FC = () => {
             <thead>
               <tr className="bg-gray-200">
                 <th className="border border-gray-300 px-4 py-2">Name</th>
+                <th className="border border-gray-300 px-4 py-2">Sr. No.</th>
                 <th className="border border-gray-300 px-4 py-2">
                   Contact Number
                 </th>
@@ -53,6 +54,9 @@ const MonthlyRevenue: React.FC = () => {
             <tbody>
               {monthlyRevenueMembers.map((member, index) => (
                 <tr key={index} className="hover:bg-gray-100">
+                  <td className="border border-gray-300 px-4 py-2 text-center">
+                    {index}
+                  </td>
                   <td className="border border-gray-300 px-4 py-2 text-center">
                     {member.name}
                   </td>

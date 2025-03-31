@@ -83,6 +83,7 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
       <table className="w-full border-collapse mt-4">
         <thead>
           <tr className="bg-gray-200">
+            <th className="border p-2">Sr No.</th>
             <th className="border p-2">Name</th>
             <th className="border p-2">Contact Number</th>
             <th className="border p-2">Joining Date</th>
@@ -93,13 +94,14 @@ const InquiryList: React.FC<InquiryListProps> = ({ setActiveTab }) => {
         <tbody>
           {inquiries.map((inquiry, index) => (
             <tr key={index} className="hover:bg-gray-100">
+              <td className="border p-2">{index +1}</td>
               <td className="border p-2">{inquiry.name}</td>
               <td className="border p-2">
                 <a
                   href={`https://web.whatsapp.com/send?phone=${
                     inquiry.contactNumber
                   }&text=${encodeURIComponent(
-                    `Welcome to YUVI FITNESS!\n\nThank you for choosing us to help you on your fitness journey. We are excited to have you on board!\n\nPlease note the following details:\n\n- *Amount Paid*: ${inquiry.amountPaid}\n- *Tenure*: ${inquiry.tenure}\n- *Gym Timings*: We are open from Monday to Saturday.\n  - Morning: 6:00 AM to 11:00 AM\n  - Evening: 5:00 PM to 10:00 PM\n\nIf you have any questions or need assistance, feel free to reach out to us. We're here to help you achieve your fitness goals!`
+                    `Welcome to YUVI FITNESS!\n\nThank you for choosing us to help you on your fitness journey. We are excited to have you on board!\n\nPlease note the following details:\n\n- *Amount Paid*: ${inquiry.amountPaid}\n- *Amount Due*: ${inquiry.balanceDue}\n- *Tenure*: ${inquiry.tenure}\n- *Joining Date*: ${inquiry.joiningDate}\n- *Gym Timings*: We are open from Monday to Saturday.\n  - Morning: 6:00 AM to 11:00 AM\n  - Evening: 5:00 PM to 10:00 PM\n\nIf you have any questions or need assistance, feel free to reach out to us. We're here to help you achieve your fitness goals!`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"

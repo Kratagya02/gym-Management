@@ -25,7 +25,7 @@ const LandingPage: React.FC = () => {
             Add New Member
           </button>
           <button onClick={() => setActiveTab('list')} className={`p-3 rounded-md shadow-md cursor-pointer ${activeTab === 'list' ? 'bg-pink-500 text-white' : 'bg-white'}`}>
-            View Inquiries
+            View Memberships
           </button>
           <button onClick={() => setActiveTab('expiring')} className={`p-3 rounded-md shadow-md cursor-pointer ${activeTab === 'expiring' ? 'bg-red-500 text-white' : 'bg-white'}`}>
             View Expiring Members
